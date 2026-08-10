@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="MarkNest - 免费的浏览器收藏整理工具">
+  <title>MarkNest - 浏览器收藏整理</title>
+  <style>
+    :root { color-scheme: light; --ink:#282621; --muted:#746f66; --paper:#f7f3e9; --card:#fffdf8; --yellow:#f6d76f; --blue:#6c86c9; }
+    * { box-sizing:border-box; }
+    body { margin:0; min-height:100vh; color:var(--ink); background:var(--paper); font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans SC",sans-serif; }
+    main { width:min(760px,calc(100% - 40px)); margin:0 auto; padding:72px 0; }
+    .hero { padding:48px; border:2px solid var(--ink); border-radius:28px; background:var(--card); box-shadow:8px 8px 0 rgba(40,38,33,.15); }
+    .brand { display:flex; align-items:center; gap:18px; }
+    .brand img { width:72px; height:72px; }
+    h1 { margin:0; font-size:clamp(34px,7vw,58px); letter-spacing:-.04em; }
+    p { color:var(--muted); font-size:18px; line-height:1.75; }
+    .actions { display:flex; flex-wrap:wrap; gap:12px; margin-top:28px; }
+    a { display:inline-flex; align-items:center; min-height:48px; padding:0 20px; color:var(--ink); text-decoration:none; font-weight:700; border:2px solid var(--ink); border-radius:14px; background:var(--yellow); }
+    a.secondary { background:var(--card); }
+    .note { margin-top:32px; font-size:14px; }
+    @media (max-width:600px) { main { padding:24px 0; } .hero { padding:28px; } }
+  </style>
+</head>
+<body>
+  <main>
+    <section class="hero">
+      <div class="brand">
+        <img src="./icon128.png" alt="MarkNest 图标">
+        <h1>MarkNest</h1>
+      </div>
+      <p>快速查重、分类、移动和导出浏览器收藏，检查长期未用与失效链接，并通过书签 HTML 在不同浏览器之间进行本地比对。</p>
+      <div class="actions">
+        <a href="./privacy/">隐私政策</a>
+        <a class="secondary" href="https://github.com/tinxixii/MarkNest">GitHub 项目</a>
+      </div>
+      <p class="note">免费使用 · 本地处理 · 无广告与分析 SDK</p>
+    </section>
+  </main>
+</body>
+</html>
