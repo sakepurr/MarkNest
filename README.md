@@ -1,28 +1,51 @@
-# MarkNest
+<div align="center">
 
-MarkNest 是一款免费的浏览器收藏整理工具，帮助你快速查重、分类、移动、删除和导出收藏，并检查长期未用与失效链接。
+# 📚 MarkNest
 
-## 主要功能
+**Tidy up your browser bookmarks — find duplicates, fix dead links, and organize with ease.**
 
-- 按文件夹查看和搜索 Chrome 收藏
-- 快速查找重复网址与长期未用的收藏
-- 批量移动、删除与撤销操作
-- 调整文件夹结构并导出标准书签 HTML
-- 导入其他浏览器导出的书签 HTML，与当前 Chrome 收藏进行本地比对
-- 在用户主动授权后检查收藏链接是否可访问
+![Free](https://img.shields.io/badge/Free-YES-brightgreen)
+![Chrome](https://img.shields.io/badge/Chrome-Extension-blue)
 
-## 隐私
+[简体中文](./README.zh-CN.md) | English
 
-MarkNest 不包含账号、广告、分析 SDK 或 AI 服务。收藏整理与书签文件比对均在本地完成。
+</div>
 
-[查看隐私政策](https://tinxixii.github.io/MarkNest/privacy/)
+MarkNest is a free Chrome extension that helps you keep your bookmarks in order. Browse and search your collections by folder, spot duplicate and long-unused links in seconds, batch move or delete with undo, and import/export standard bookmark HTML — all processed locally on your device.
 
-## 获取与反馈
+## 📸 Screenshots
 
-Chrome 应用商店版本正在准备中。欢迎通过 [Issues](https://github.com/tinxixii/MarkNest/issues) 提交问题和建议。
+<!-- 替换为你的产品截图，例如：
+<img src="https://tinxixii.github.io/MarkNest/screenshots/main.png" alt="MarkNest main view" />
+-->
 
-## 源代码说明
+> Screenshots coming soon.
 
-MarkNest 免费使用，但扩展程序源代码目前未开源。本仓库仅用于产品介绍、公开文档、隐私政策和用户反馈。
+## ✨ Features
 
-仓库中的品牌素材、文案和页面内容未经许可不得复制、重新分发或用于发布同类扩展。
+- 🔍 **Browse & Search** — view and search Chrome bookmarks by folder
+- ♻️ **Find Duplicates** — quickly locate duplicate URLs and long-unused bookmarks
+- 📦 **Batch Manage** — move, delete, and undo operations in bulk
+- 🗂️ **Organize & Export** — restructure folders and export to standard bookmark HTML
+- 📥 **Import & Compare** — import bookmark HTML from other browsers and compare against your current bookmarks locally
+- 🔗 **Link Checker** — verify bookmark links are reachable, only after you explicitly grant access
+
+## 🔒 Privacy
+
+MarkNest has no accounts, no ads, no analytics SDKs, and no AI services. All bookmark organizing and file comparison happen locally on your device.
+
+[View Privacy Policy](https://tinxixii.github.io/MarkNest/privacy/)
+
+## 📝 Feedback
+
+The Chrome Web Store release is coming soon. Please submit issues and suggestions via [Issues](https://github.com/tinxixii/MarkNest/issues).
+
+## 📦 Source Code Note
+
+MarkNest is free to use, but the extension source code is not open-sourced. This repository is used only for product introduction, public documentation, the privacy policy, and user feedback.
+
+The brand assets, copy, and page content in this repository may not be copied, redistributed, or used to publish similar extensions without permission.
+
+## 🌟 Support
+
+If MarkNest helps you, please give it a ⭐
