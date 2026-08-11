@@ -2,7 +2,7 @@
 
 <img src="docs/icon128.png" width="88" alt="MarkNest Logo">
 
-# MarkNest
+# ✨ MarkNest ✨
 
 **本地优先的 Chrome 收藏整理、分类与跨浏览器比对工具。**
 
@@ -20,10 +20,6 @@ MarkNest 源于一次真实的浏览器迁移：文件夹层层嵌套、重复�
 ### 查看收藏全貌，直接整理文件夹
 
 ![MarkNest 深度整理界面](docs/images/screenshots/zh-CN/organizer.png)
-
-### 在弹窗中快速整理
-
-<p align="center"><img src="docs/images/screenshots/zh-CN/popup.png" width="430" alt="MarkNest 快速整理弹窗"></p>
 
 ### 与其他浏览器导出的书签文件比对
 
@@ -45,7 +41,7 @@ MarkNest 不包含 AI 分类、账号、广告或分析 SDK。
 1. 点击 **Code → Download ZIP**，然后解压仓库。
 2. 在 Chrome 打开 `chrome://extensions`。
 3. 开启右上角的 **开发者模式**。
-4. 点击 **加载已解压的扩展程序**，选择解压后的 `MarkNest` 文件夹（即包含 `manifest.json` 的目录）。
+4. 点击 **加载已解压的扩展程序**，选择解压后 `MarkNest` 文件夹里的 `extension` 文件夹（即包含 `manifest.json` 的目录）。
 
 ## 隐私与权限
 
@@ -67,13 +63,15 @@ MarkNest 是一个 Manifest V3 扩展，使用原生 HTML、CSS 和 JavaScript �
 
 ```text
 MarkNest/
-├── manifest.json
-├── popup.html
-├── index.html
-├── scripts/
-├── styles/
-├── assets/
-└── _locales/
+├── extension/            # 扩展本体（加载此文件夹即可）
+│   ├── manifest.json
+│   ├── popup.html
+│   ├── index.html
+│   ├── scripts/
+│   ├── styles/
+│   ├── assets/
+│   └── _locales/
+└── docs/                 # GitHub Pages 站点
 ```
 
 修改源代码后，在 `chrome://extensions` 点击扩展卡片上的“重新加载”，再重新打开插件即可。

@@ -2,7 +2,7 @@
 
 <img src="docs/icon128.png" width="88" alt="MarkNest logo">
 
-# MarkNest
+# ✨ MarkNest ✨
 
 **A local-first Chrome extension for cleaning up, reorganizing, and comparing browser bookmarks.**
 
@@ -20,10 +20,6 @@ MarkNest started with a messy browser migration: nested folders, duplicate bookm
 ### See the whole collection and reorganize folders
 
 ![MarkNest organizer](docs/images/screenshots/en/organizer.png)
-
-### Quick cleanup from the popup
-
-<p align="center"><img src="docs/images/screenshots/en/popup.png" width="430" alt="MarkNest popup"></p>
 
 ### Compare an exported bookmark file with Chrome
 
@@ -45,7 +41,7 @@ MarkNest has no AI classification, accounts, ads, or analytics SDKs.
 1. Click **Code → Download ZIP** and unzip the repository.
 2. Open `chrome://extensions` in Chrome.
 3. Enable **Developer mode**.
-4. Click **Load unpacked** and choose the unzipped `MarkNest` folder (the folder containing `manifest.json`).
+4. Click **Load unpacked** and choose the `extension` folder inside the unzipped `MarkNest` folder (it contains `manifest.json`).
 
 ## Privacy and permissions
 
@@ -67,13 +63,15 @@ MarkNest is a Manifest V3 extension built with plain HTML, CSS, and JavaScript. 
 
 ```text
 MarkNest/
-├── manifest.json
-├── popup.html
-├── index.html
-├── scripts/
-├── styles/
-├── assets/
-└── _locales/
+├── extension/            # the extension itself (load this folder unpacked)
+│   ├── manifest.json
+│   ├── popup.html
+│   ├── index.html
+│   ├── scripts/
+│   ├── styles/
+│   ├── assets/
+│   └── _locales/
+└── docs/                 # GitHub Pages site
 ```
 
 After editing the source, use **Reload** on `chrome://extensions` and reopen the extension.
