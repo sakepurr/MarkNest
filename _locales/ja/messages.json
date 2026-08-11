@@ -1,0 +1,14 @@
+{
+  "extensionName": {
+    "message": "MarkNest - ブックマーク整理",
+    "description": "拡張機能名"
+  },
+  "extensionDescription": {
+    "message": "ブラウザ間でブックマークを比較・移行し、重複整理、分類、移動、長期未使用項目や無効リンクの確認ができます。",
+    "description": "拡張機能の説明"
+  },
+  "actionTitle": {
+    "message": "MarkNest を開く",
+    "description": "ツールバーアイコンの説明"
+  }
+}

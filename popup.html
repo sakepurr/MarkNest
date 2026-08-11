@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MarkNest</title>
+  <link rel="stylesheet" href="styles/popup.css">
+</head>
+<body>
+  <main class="popup-shell">
+    <header class="popup-header">
+      <div class="popup-brand"><img src="assets/logo.svg" alt="" aria-hidden="true"><div><strong>MarkNest</strong><small>收藏夹整理</small></div></div>
+      <div class="header-actions"><button class="header-button workspace-entry" id="openWorkspaceBtn">深度整理</button><button class="header-button" id="undoBtn" disabled>撤销</button></div>
+    </header>
+
+    <label class="popup-search">
+      <span class="popup-search-icon" aria-hidden="true"></span>
+      <input id="searchInput" type="search" placeholder="搜索收藏" autofocus>
+    </label>
+
+    <section class="popup-summary" aria-label="收藏概况">
+      <button data-filter="all" class="active"><strong id="totalCount">0</strong><span>全部</span></button>
+      <button data-filter="duplicates"><strong id="duplicateCount">0</strong><span>重复网址</span></button>
+      <button data-filter="ancient"><strong id="ancientCount">0</strong><span>一年未打开</span></button>
+    </section>
+
+    <div class="popup-tools">
+      <select id="folderFilter" aria-label="筛选文件夹"><option value="">所有文件夹</option></select>
+      <span id="resultCount">0 项</span>
+    </div>
+
+    <section class="popup-list" id="bookmarkList" aria-live="polite"></section>
+
+    <footer class="popup-actions" id="selectionBar" hidden>
+      <span><b id="selectedCount">0</b> 项</span>
+      <button id="movePickerBtn" type="button">移动到…</button>
+      <button class="danger" id="deleteBtn">删除</button>
+    </footer>
+  </main>
+
+  <div class="popup-confirm" id="confirmDialog" hidden>
+    <div><strong>删除所选收藏？</strong><p id="confirmText">删除后可通过顶部“撤销”恢复。</p><footer><button id="cancelDeleteBtn">取消</button><button class="danger" id="confirmDeleteBtn">确认删除</button></footer></div>
+  </div>
+
+  <script src="scripts/i18n.js"></script>
+  <script src="scripts/popup.js"></script>
+</body>
+</html>

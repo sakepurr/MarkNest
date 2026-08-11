@@ -1,0 +1,14 @@
+{
+  "extensionName": {
+    "message": "MarkNest - Gestionnaire de favoris",
+    "description": "Nom de l’extension"
+  },
+  "extensionDescription": {
+    "message": "Comparez, importez, exportez, classez et déplacez vos favoris entre navigateurs, avec détection des doublons et liens invalides.",
+    "description": "Description de l’extension"
+  },
+  "actionTitle": {
+    "message": "Ouvrir MarkNest",
+    "description": "Infobulle de l’icône de la barre d’outils"
+  }
+}

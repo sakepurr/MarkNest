@@ -1,51 +1,87 @@
 <div align="center">
 
-# 📚 MarkNest
+<img src="docs/icon128.png" width="88" alt="MarkNest logo">
 
-**Tidy up your browser bookmarks — find duplicates, fix dead links, and organize with ease.**
+# MarkNest
 
-![Free](https://img.shields.io/badge/Free-YES-brightgreen)
-![Chrome](https://img.shields.io/badge/Chrome-Extension-blue)
+**A local-first Chrome extension for cleaning up, reorganizing, and comparing browser bookmarks.**
 
-[简体中文](./README.zh-CN.md) | English
+[![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](LICENSE)
+[![Chrome](https://img.shields.io/badge/Chrome-Extension-6c86c9)](https://www.google.com/chrome/)
+
+English · [简体中文](README.zh-CN.md)
 
 </div>
 
-MarkNest is a free Chrome extension that helps you keep your bookmarks in order. Browse and search your collections by folder, spot duplicate and long-unused links in seconds, batch move or delete with undo, and import/export standard bookmark HTML — all processed locally on your device.
+MarkNest started with a messy browser migration: nested folders, duplicate bookmarks, old links, and useful pages scattered across browsers. It brings those tasks into one visual workspace while keeping bookmark data on your device.
 
-## 📸 Screenshots
+## Screenshots
 
-<!-- 替换为你的产品截图，例如：
-<img src="https://tinxixii.github.io/MarkNest/screenshots/main.png" alt="MarkNest main view" />
--->
+### See the whole collection and reorganize folders
 
-> Screenshots coming soon.
+![MarkNest organizer](docs/images/screenshots/en/organizer.png)
 
-## ✨ Features
+### Quick cleanup from the popup
 
-- 🔍 **Browse & Search** — view and search Chrome bookmarks by folder
-- ♻️ **Find Duplicates** — quickly locate duplicate URLs and long-unused bookmarks
-- 📦 **Batch Manage** — move, delete, and undo operations in bulk
-- 🗂️ **Organize & Export** — restructure folders and export to standard bookmark HTML
-- 📥 **Import & Compare** — import bookmark HTML from other browsers and compare against your current bookmarks locally
-- 🔗 **Link Checker** — verify bookmark links are reachable, only after you explicitly grant access
+<p align="center"><img src="docs/images/screenshots/en/popup.png" width="430" alt="MarkNest popup"></p>
 
-## 🔒 Privacy
+### Compare an exported bookmark file with Chrome
 
-MarkNest has no accounts, no ads, no analytics SDKs, and no AI services. All bookmark organizing and file comparison happen locally on your device.
+![MarkNest cross-browser comparison](docs/images/screenshots/en/compare.png)
 
-[View Privacy Policy](https://tinxixii.github.io/MarkNest/privacy/)
+## What it does
 
-## 📝 Feedback
+- Browse and search all Chrome bookmarks with their real folder hierarchy and favicons.
+- Find duplicate URLs and bookmarks that have not been opened for a year.
+- Select, move, delete, export, and undo in batches.
+- Create, reorder, nest, expand, and collapse bookmark folders.
+- Check broken links only after the user explicitly grants site access.
+- Import a standard bookmark HTML file for local cross-browser comparison, then selectively add missing items to Chrome.
 
-The Chrome Web Store release is coming soon. Please submit issues and suggestions via [Issues](https://github.com/tinxixii/MarkNest/issues).
+MarkNest has no AI classification, accounts, ads, or analytics SDKs.
 
-## 📦 Source Code Note
+## Install from GitHub
 
-MarkNest is free to use, but the extension source code is not open-sourced. This repository is used only for product introduction, public documentation, the privacy policy, and user feedback.
+1. Click **Code → Download ZIP** and unzip the repository.
+2. Open `chrome://extensions` in Chrome.
+3. Enable **Developer mode**.
+4. Click **Load unpacked** and choose the unzipped `MarkNest` folder (the folder containing `manifest.json`).
 
-The brand assets, copy, and page content in this repository may not be copied, redistributed, or used to publish similar extensions without permission.
+## Privacy and permissions
 
-## 🌟 Support
+Bookmark organization, import comparison, and export are processed locally. MarkNest does not send bookmarks, browsing history, or imported files to the developer or third-party servers.
 
-If MarkNest helps you, please give it a ⭐
+| Permission | Why it is needed |
+| --- | --- |
+| `bookmarks` | Read and update the bookmark tree after user actions. |
+| `storage` | Save interface settings, link-check results, and undo snapshots locally. |
+| `downloads` | Export selected bookmarks as a standard HTML file. |
+| `favicon` | Display local Chrome favicon resources in the interface. |
+| Optional website access | Requested only when the user starts a broken-link check. |
+
+[Read the privacy policy](https://tinxixii.github.io/MarkNest/privacy/) · [Report an issue](https://github.com/tinxixii/MarkNest/issues)
+
+## Development
+
+MarkNest is a Manifest V3 extension built with plain HTML, CSS, and JavaScript. It has no package manager, build step, remote code, or runtime dependency.
+
+```text
+MarkNest/
+├── manifest.json
+├── popup.html
+├── index.html
+├── scripts/
+├── styles/
+├── assets/
+└── _locales/
+```
+
+After editing the source, use **Reload** on `chrome://extensions` and reopen the extension.
+
+## License and brand
+
+The source code is licensed under [GNU GPL v3.0](LICENSE). Modified versions distributed under the GPL must remain open source under the same license.
+
+The **MarkNest** name, logo, and extension icons are not granted for modified products. Forks are welcome, but public modified releases should use a different name and visual identity. See [TRADEMARKS.md](TRADEMARKS.md).
+
+If MarkNest is useful to you, a ⭐ helps more people find it.

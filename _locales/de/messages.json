@@ -1,0 +1,14 @@
+{
+  "extensionName": {
+    "message": "MarkNest - Lesezeichen organisieren",
+    "description": "Name der Erweiterung"
+  },
+  "extensionDescription": {
+    "message": "Lesezeichen browserübergreifend vergleichen, importieren, exportieren und sortieren sowie Duplikate, alte und defekte Links finden.",
+    "description": "Beschreibung der Erweiterung"
+  },
+  "actionTitle": {
+    "message": "MarkNest öffnen",
+    "description": "Hinweis für das Symbol in der Symbolleiste"
+  }
+}

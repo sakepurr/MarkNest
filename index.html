@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MarkNest</title>
+  <link rel="stylesheet" href="styles/style.css">
+</head>
+<body>
+  <main class="app">
+    <header class="header">
+      <a class="brand" href="#" aria-label="收藏夹整理首页">
+        <img class="brand-mark" src="assets/logo.svg" alt="" aria-hidden="true">
+        <span>MarkNest</span>
+      </a>
+      <div class="header-actions">
+        <button class="text-button" id="restoreBtn" disabled>撤销上次操作</button>
+        <button class="text-button" id="checkLinksBtn">检查链接</button>
+        <button class="compare-entry-button" id="compareBtn">导入并比对</button>
+        <button class="secondary-button" id="scanBtn">重新扫描</button>
+      </div>
+    </header>
+
+    <section class="workspace" id="workspace">
+      <div class="workspace-heading" hidden>
+        <div>
+          <h1>收藏夹整理</h1>
+          <p id="scanSummary">正在读取收藏夹…</p>
+        </div>
+        <div class="progress-copy" hidden><strong id="visibleCount">0</strong><span>当前列表</span></div>
+      </div>
+
+      <div class="bookmark-browser">
+        <aside class="folder-sidebar" aria-label="原收藏文件夹">
+          <div class="folder-sidebar-heading">
+            <span class="folder-sidebar-icon" aria-hidden="true">
+              <svg viewBox="0 0 28 24">
+                <path class="folder-shape" d="M3.2 7.3h7.1l2.1-3h5.7c1.1 0 1.8.5 2.1 1.5l.5 1.5h4.1v13H3.2v-13Z"/>
+                <path class="folder-face" d="M5 10.1h18l-1.6 8.4H6.5L5 10.1Z"/>
+                <path class="folder-opening" d="M5 10.1h18"/>
+              </svg>
+            </span>
+            <div><strong>文件夹</strong><small id="folderTreeScope">按文件夹查看</small></div>
+            <button class="new-folder-trigger" id="newFolderBtn" aria-label="新建文件夹" title="新建文件夹">+</button>
+          </div>
+          <div class="new-folder-popover" id="newFolderDialog" role="dialog" aria-labelledby="newFolderTitle" hidden>
+            <strong id="newFolderTitle">新建文件夹</strong>
+            <input id="newFolderName" type="text" maxlength="60" placeholder="文件夹名称" autocomplete="off" aria-label="文件夹名称">
+            <select id="newFolderParent" aria-label="新建到"></select>
+            <div class="new-folder-actions">
+              <button class="text-button" id="cancelNewFolderBtn">取消</button>
+              <button class="primary-button" id="confirmNewFolderBtn">创建</button>
+            </div>
+          </div>
+          <nav class="folder-tree" id="folderTree"></nav>
+          <footer class="folder-sidebar-footer" hidden>
+            <label class="language-picker" title="界面语言">
+              <span class="language-globe" aria-hidden="true"></span>
+              <span class="language-label">语言</span>
+              <select id="languageSelect" aria-label="界面语言">
+                <option value="zh-CN">中文</option>
+                <option value="en">English</option>
+                <option value="ja">日本語</option>
+                <option value="fr">Français</option>
+                <option value="de">Deutsch</option>
+              </select>
+            </label>
+          </footer>
+        </aside>
+
+        <div class="bookmark-content">
+          <div class="list-toolbar">
+            <div class="toolbar-primary">
+              <div class="toolbar-context">
+                <strong id="activeFolderName">全部文件夹</strong>
+                <span id="activeFolderHint" hidden></span>
+              </div>
+              <button class="delete-folder-button" id="deleteFolderBtn" hidden>删除文件夹</button>
+            </div>
+            <div class="select-all" id="selectAllControl" role="button" tabindex="0" aria-label="全选">
+              <input type="checkbox" id="selectAll">
+              <span id="selectAllText">全选</span>
+            </div>
+            <label class="search-box">
+              <span class="search-icon" aria-hidden="true"></span>
+              <input id="searchInput" type="search" placeholder="搜索收藏">
+            </label>
+            <div class="toolbar-filters" aria-label="列表筛选">
+              <label class="status-filter toolbar-filter date-filter">
+                <select id="dateFilter" aria-label="按收藏年份筛选">
+                  <option value="all">全部时间</option>
+                </select>
+              </label>
+              <label class="status-filter toolbar-filter">
+                <select id="statusFilter" aria-label="按状态筛选">
+                  <option value="all">全部状态</option>
+                  <option value="duplicates">同站页面</option>
+                  <option value="ancient">一年未打开</option>
+                  <option value="broken">失效链接</option>
+                </select>
+              </label>
+            </div>
+          </div>
+          <nav class="folder-quick-filters" id="folderQuickFilters" aria-label="当前文件夹筛选">
+            <button data-folder-issue="all">全部 <b id="quickCountAll">0</b></button>
+            <button data-folder-issue="duplicates">同站页面 <b id="quickCountDuplicates">0</b></button>
+            <button data-folder-issue="ancient">一年未打开 <b id="quickCountAncient">0</b></button>
+          </nav>
+          <section class="bookmark-panel" id="bookmarkPanel" aria-live="polite">
+            <div class="bookmark-columns-header">
+              <span></span><span>收藏名称</span>
+              <button class="date-sort-button" id="dateSortBtn" type="button" aria-label="按收藏时间从新到旧排序">收藏时间 <span id="dateSortIcon">↓</span></button>
+              <span>状态</span>
+            </div>
+            <div id="bookmarkList" class="bookmark-list"></div>
+          </section>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <aside class="action-bar" id="actionBar" aria-live="polite">
+    <div class="selection-meta">
+      <div class="selection-count"><strong id="selectedCount">0</strong><span>已选</span></div>
+    </div>
+    <div class="action-controls">
+      <span class="drag-hint">拖到左侧文件夹移动</span>
+      <label class="folder-select" hidden>
+        <span>移动到</span>
+        <select id="targetFolder" aria-label="选择目标文件夹"></select>
+      </label>
+      <button class="move-button" id="moveBtn" disabled hidden>移动</button>
+      <button class="export-button" id="exportBtn" disabled>导出</button>
+      <span class="action-divider"></span>
+      <button class="delete-button" id="deleteBtn" disabled>删除</button>
+    </div>
+  </aside>
+
+  <div class="confirm-dialog" id="confirmDialog" role="dialog" aria-modal="true" aria-labelledby="confirmTitle" hidden>
+    <div class="dialog-card">
+      <span class="dialog-icon" aria-hidden="true">!</span>
+      <h2 id="confirmTitle">确认删除这些收藏？</h2>
+      <p id="confirmText">可通过右上角撤销恢复。</p>
+      <div class="dialog-actions">
+        <button class="secondary-button" id="cancelDeleteBtn">取消</button>
+        <button class="delete-button" id="confirmDeleteBtn">确认删除</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="confirm-dialog" id="linkPermissionDialog" role="dialog" aria-modal="true" aria-labelledby="linkPermissionTitle" hidden>
+    <div class="dialog-card permission-dialog-card">
+      <span class="permission-mark" aria-hidden="true">✓</span>
+      <h2 id="linkPermissionTitle">允许检查收藏链接？</h2>
+      <p id="linkPermissionText">需要访问收藏中的网站，才能判断链接是否仍可打开。仅检查响应状态，不保存页面内容。</p>
+      <div class="permission-note"><strong>仅在你点击检查时使用</strong><span>授权一次，后续无需重复确认</span></div>
+      <div class="dialog-actions">
+        <button class="secondary-button" id="cancelLinkPermissionBtn">暂不检查</button>
+        <button class="primary-button" id="grantLinkPermissionBtn">允许并检查</button>
+      </div>
+      <button class="permission-settings-button" id="openExtensionSettingsBtn" hidden>打开扩展设置</button>
+    </div>
+  </div>
+
+  <div class="confirm-dialog compare-dialog" id="compareDialog" role="dialog" aria-modal="true" aria-labelledby="compareTitle" hidden>
+    <div class="dialog-card compare-dialog-card">
+      <header class="compare-heading">
+        <div>
+          <span class="compare-kicker">跨浏览器迁移</span>
+          <h2 id="compareTitle">导入并比对书签</h2>
+          <p>选择任意浏览器导出的 HTML 文件。文件只在本地解析，不会上传。</p>
+        </div>
+        <button class="dialog-close" id="closeCompareBtn" aria-label="关闭">×</button>
+      </header>
+
+      <section class="compare-upload" id="compareUpload">
+        <span class="compare-upload-illustration" aria-hidden="true"><i></i><b>＋</b></span>
+        <div><strong>选择书签 HTML 文件</strong><span>支持 Chrome、Edge、Firefox、Safari、Atlas 等标准导出文件</span></div>
+        <button class="primary-button" id="chooseCompareFileBtn">选择文件</button>
+        <input id="compareFileInput" type="file" accept=".html,.htm,text/html" hidden>
+      </section>
+
+      <section class="compare-results" id="compareResults" hidden>
+        <div class="compare-file-bar">
+          <div><strong id="compareFileName">书签文件</strong><span id="compareFileMeta">已完成比对</span></div>
+          <button class="text-button" id="replaceCompareFileBtn">更换文件</button>
+        </div>
+        <nav class="compare-tabs" id="compareTabs" aria-label="比对结果">
+          <button class="active" data-compare-tab="missing"><strong id="compareMissingCount">0</strong><span>文件独有</span></button>
+          <button data-compare-tab="changed"><strong id="compareChangedCount">0</strong><span>信息不同</span></button>
+          <button data-compare-tab="shared"><strong id="compareSharedCount">0</strong><span>两边都有</span></button>
+          <button data-compare-tab="extra"><strong id="compareExtraCount">0</strong><span>Chrome 独有</span></button>
+        </nav>
+        <div class="compare-list-toolbar">
+          <label id="compareSelectAllLabel"><input type="checkbox" id="compareSelectAll"><span>全选文件独有项</span></label>
+          <span id="compareListHint">可选择导入到 Chrome</span>
+        </div>
+        <div class="compare-list" id="compareList"></div>
+        <footer class="compare-actions">
+          <label><span>导入到</span><select id="compareTargetFolder" aria-label="选择导入目标文件夹"></select></label>
+          <label class="preserve-folders"><input type="checkbox" id="preserveCompareFolders" checked><span>保留原文件夹结构</span></label>
+          <button class="primary-button" id="importComparedBtn" disabled>导入所选</button>
+        </footer>
+      </section>
+    </div>
+  </div>
+
+  <div class="toast" id="toast"></div>
+  <script src="scripts/i18n.js"></script>
+  <script src="scripts/app.js"></script>
+</body>
+</html>

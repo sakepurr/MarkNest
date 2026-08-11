@@ -1,0 +1,14 @@
+{
+  "extensionName": {
+    "message": "MarkNest - 浏览器收藏整理",
+    "description": "扩展名称"
+  },
+  "extensionDescription": {
+    "message": "快速查重、分类、移动和导出，检查长期未用与失效链接，并可导入书签文件进行跨浏览器比对。",
+    "description": "扩展介绍"
+  },
+  "actionTitle": {
+    "message": "打开 MarkNest",
+    "description": "工具栏图标提示"
+  }
+}

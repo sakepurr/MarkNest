@@ -1,41 +1,49 @@
 <!doctype html>
-<html lang="zh-CN">
+<html lang="en">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="MarkNest - 免费的浏览器收藏整理工具">
-  <title>MarkNest - 浏览器收藏整理</title>
+  <meta name="description" content="MarkNest is a local-first Chrome extension for organizing and comparing browser bookmarks.">
+  <title>MarkNest · Browser bookmark organizer</title>
   <style>
-    :root { color-scheme: light; --ink:#282621; --muted:#746f66; --paper:#f7f3e9; --card:#fffdf8; --yellow:#f6d76f; --blue:#6c86c9; }
-    * { box-sizing:border-box; }
-    body { margin:0; min-height:100vh; color:var(--ink); background:var(--paper); font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans SC",sans-serif; }
-    main { width:min(760px,calc(100% - 40px)); margin:0 auto; padding:72px 0; }
-    .hero { padding:48px; border:2px solid var(--ink); border-radius:28px; background:var(--card); box-shadow:8px 8px 0 rgba(40,38,33,.15); }
-    .brand { display:flex; align-items:center; gap:18px; }
-    .brand img { width:72px; height:72px; }
-    h1 { margin:0; font-size:clamp(34px,7vw,58px); letter-spacing:-.04em; }
-    p { color:var(--muted); font-size:18px; line-height:1.75; }
-    .actions { display:flex; flex-wrap:wrap; gap:12px; margin-top:28px; }
-    a { display:inline-flex; align-items:center; min-height:48px; padding:0 20px; color:var(--ink); text-decoration:none; font-weight:700; border:2px solid var(--ink); border-radius:14px; background:var(--yellow); }
-    a.secondary { background:var(--card); }
-    .note { margin-top:32px; font-size:14px; }
-    @media (max-width:600px) { main { padding:24px 0; } .hero { padding:28px; } }
+    :root{color-scheme:light;--ink:#292824;--muted:#777167;--paper:#f5f1e8;--card:#fffdf9;--yellow:#f7d76d;--yellow-soft:#fff5c8;--blue:#6c86c9;--line:#d7d1c5}
+    *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;color:var(--ink);background-color:var(--paper);background-image:radial-gradient(#fff 1.2px,transparent 1.2px);background-size:26px 26px;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans SC",sans-serif}
+    a{color:inherit}header,main,footer{width:min(1120px,calc(100% - 40px));margin:auto}.topbar{display:flex;align-items:center;justify-content:space-between;padding:24px 0}.brand{display:flex;align-items:center;gap:12px;text-decoration:none}.brand img{width:48px;height:48px}.brand strong{font-size:22px}.lang{display:flex;gap:6px;padding:4px;background:rgba(255,253,249,.8);border:1px solid var(--line);border-radius:12px}.lang button{padding:7px 10px;color:var(--muted);background:transparent;border:0;border-radius:8px;cursor:pointer}.lang button.active{color:var(--ink);background:var(--yellow-soft)}
+    main{padding:42px 0 84px}.hero{display:grid;grid-template-columns:minmax(0,1fr) minmax(360px,.86fr);align-items:center;gap:56px}.eyebrow{color:#5671b5;font-size:13px;font-weight:800;letter-spacing:.14em;text-transform:uppercase}.hero h1{max-width:720px;margin:14px 0 22px;font-size:clamp(44px,7vw,76px);line-height:1.03;letter-spacing:-.055em}.hero p{max-width:670px;margin:0;color:var(--muted);font-size:19px;line-height:1.75}.actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:30px}.button{display:inline-flex;align-items:center;min-height:48px;padding:0 20px;text-decoration:none;font-weight:750;border:2px solid var(--ink);border-radius:13px 9px 14px 10px;background:var(--yellow);box-shadow:3px 4px 0 rgba(41,40,36,.12)}.button.secondary{background:var(--card)}.hero-art{max-height:660px;padding:18px;overflow:hidden;border:2px solid var(--ink);border-radius:24px 18px 26px 20px;background:var(--card);box-shadow:8px 9px 0 rgba(41,40,36,.13);transform:rotate(1deg)}.hero-art img{display:block;width:100%;border-radius:14px}
+    .features{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin:84px 0}.feature{padding:26px;border:1.5px solid var(--line);border-radius:18px 13px 20px 15px;background:rgba(255,253,249,.94)}.feature span{font-size:25px}.feature h2{margin:14px 0 8px;font-size:18px}.feature p{margin:0;color:var(--muted);line-height:1.65}.preview{padding:26px;border:1.5px solid var(--line);border-radius:24px;background:rgba(255,253,249,.94)}.preview-head{display:flex;align-items:end;justify-content:space-between;gap:16px;margin-bottom:20px}.preview h2{margin:0;font-size:30px;letter-spacing:-.03em}.preview p{margin:6px 0 0;color:var(--muted)}.preview img{display:block;width:100%;border:1px solid var(--line);border-radius:14px}
+    footer{display:flex;justify-content:space-between;gap:18px;padding:28px 0 42px;color:var(--muted);font-size:14px;border-top:1px solid var(--line)}footer nav{display:flex;gap:18px}
+    [data-lang]{display:none!important}html[data-locale="en"] [data-lang="en"],html[data-locale="zh"] [data-lang="zh"]{display:revert!important}
+    @media(max-width:820px){.hero{grid-template-columns:1fr}.hero-art{transform:none}.features{grid-template-columns:1fr}.preview{padding:14px}.preview-head,footer{align-items:flex-start;flex-direction:column}}
   </style>
 </head>
 <body>
+  <header>
+    <div class="topbar">
+      <a class="brand" href="./"><img src="./icon128.png" alt=""><strong>MarkNest</strong></a>
+      <div class="lang" aria-label="Language"><button data-set-lang="en">EN</button><button data-set-lang="zh">中文</button></div>
+    </div>
+  </header>
   <main>
     <section class="hero">
-      <div class="brand">
-        <img src="./icon128.png" alt="MarkNest 图标">
-        <h1>MarkNest</h1>
+      <div>
+        <div class="eyebrow" data-lang="en">Local-first bookmark cleanup</div><div class="eyebrow" data-lang="zh">本地优先的收藏整理</div>
+        <h1 data-lang="en">Bring order back to your bookmarks.</h1><h1 data-lang="zh">让浏览器收藏，重新变得清楚。</h1>
+        <p data-lang="en">Find duplicates and old links, reorganize folders, manage bookmarks in batches, and compare an exported bookmark file with Chrome—all on your device.</p>
+        <p data-lang="zh">查找重复与长期未用的收藏，整理文件夹、批量移动和删除，并将其他浏览器导出的书签文件与 Chrome 本地比对。</p>
+        <div class="actions"><a class="button" href="https://github.com/tinxixii/MarkNest" data-lang="en">View on GitHub</a><a class="button" href="https://github.com/tinxixii/MarkNest" data-lang="zh">前往 GitHub</a><a class="button secondary" href="./privacy/" data-lang="en">Privacy policy</a><a class="button secondary" href="./privacy/" data-lang="zh">隐私政策</a></div>
       </div>
-      <p>快速查重、分类、移动和导出浏览器收藏，检查长期未用与失效链接，并通过书签 HTML 在不同浏览器之间进行本地比对。</p>
-      <div class="actions">
-        <a href="./privacy/">隐私政策</a>
-        <a class="secondary" href="https://github.com/tinxixii/MarkNest">GitHub 项目</a>
-      </div>
-      <p class="note">免费使用 · 本地处理 · 无广告与分析 SDK</p>
+      <div class="hero-art"><img data-lang="en" src="./images/screenshots/en/popup.png" alt="MarkNest popup"><img data-lang="zh" src="./images/screenshots/zh-CN/popup.png" alt="MarkNest 快速整理弹窗"></div>
     </section>
+    <section class="features">
+      <article class="feature"><span>⌕</span><h2 data-lang="en">Find what needs attention</h2><h2 data-lang="zh">先找到需要整理的内容</h2><p data-lang="en">Search all bookmarks and review duplicate URLs, long-unused items, and broken links.</p><p data-lang="zh">搜索全部收藏，集中查看重复网址、长期未打开和失效链接。</p></article>
+      <article class="feature"><span>↗</span><h2 data-lang="en">Reorganize directly</h2><h2 data-lang="zh">直接完成重新分类</h2><p data-lang="en">Select bookmarks in batches or drag folders to change their order and hierarchy.</p><p data-lang="zh">批量选择收藏进行移动和删除，也可以拖拽文件夹调整顺序与层级。</p></article>
+      <article class="feature"><span>⇄</span><h2 data-lang="en">Compare across browsers</h2><h2 data-lang="zh">跨浏览器书签比对</h2><p data-lang="en">Compare a standard bookmark HTML file locally and selectively add what Chrome is missing.</p><p data-lang="zh">在本地比对标准书签 HTML 文件，选择性补充 Chrome 中缺少的内容。</p></article>
+    </section>
+    <section class="preview"><div class="preview-head"><div><h2 data-lang="en">See the complete collection</h2><h2 data-lang="zh">首屏查看收藏全貌</h2><p data-lang="en">A familiar folder tree on the left and a compact bookmark table on the right.</p><p data-lang="zh">左侧保留熟悉的文件夹树，右侧紧凑展示收藏内容。</p></div></div><img data-lang="en" src="./images/screenshots/en/organizer.png" alt="MarkNest organizer"><img data-lang="zh" src="./images/screenshots/zh-CN/organizer.png" alt="MarkNest 深度整理界面"></section>
   </main>
+  <footer><span>© 2026 MarkNest · GPL-3.0 code</span><nav><a href="https://github.com/tinxixii/MarkNest">GitHub</a><a href="./privacy/" data-lang="en">Privacy</a><a href="./privacy/" data-lang="zh">隐私</a></nav></footer>
+  <script>
+    (()=>{const saved=localStorage.getItem('marknest-site-language');const initial=saved||((navigator.language||'en').toLowerCase().startsWith('zh')?'zh':'en');function set(locale){document.documentElement.dataset.locale=locale;document.documentElement.lang=locale==='zh'?'zh-CN':'en';document.title=locale==='zh'?'MarkNest · 浏览器收藏整理':'MarkNest · Browser bookmark organizer';document.querySelectorAll('[data-set-lang]').forEach(button=>button.classList.toggle('active',button.dataset.setLang===locale));localStorage.setItem('marknest-site-language',locale)}document.querySelectorAll('[data-set-lang]').forEach(button=>button.addEventListener('click',()=>set(button.dataset.setLang)));set(initial)})();
+  </script>
 </body>
 </html>

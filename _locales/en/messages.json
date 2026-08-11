@@ -1,0 +1,14 @@
+{
+  "extensionName": {
+    "message": "MarkNest - Browser Bookmark Organizer",
+    "description": "Extension name"
+  },
+  "extensionDescription": {
+    "message": "Compare, import, export, deduplicate, classify, and move bookmarks across browsers, with stale and broken link checks.",
+    "description": "Extension description"
+  },
+  "actionTitle": {
+    "message": "Open MarkNest",
+    "description": "Toolbar action tooltip"
+  }
+}

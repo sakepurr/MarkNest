@@ -1,51 +1,87 @@
 <div align="center">
 
-# 📚 MarkNest
+<img src="docs/icon128.png" width="88" alt="MarkNest Logo">
 
-**免费书签收藏整理工具，帮你快速查重、分类、整理浏览器收藏。**
+# MarkNest
 
-![Free](https://img.shields.io/badge/Free-YES-brightgreen)
-![Chrome](https://img.shields.io/badge/Chrome-Extension-blue)
+**本地优先的 Chrome 收藏整理、分类与跨浏览器比对工具。**
 
-[English](./README.md) | 简体中文
+[![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](LICENSE)
+[![Chrome](https://img.shields.io/badge/Chrome-Extension-6c86c9)](https://www.google.com/chrome/)
+
+[English](README.md) · 简体中文
 
 </div>
 
-MarkNest 是一款免费的 Chrome 书签整理工具。按文件夹浏览和搜索收藏、快速找出重复与长期未用的链接、批量移动或删除并可撤销，还能导入导出标准书签 HTML——所有操作都在本地完成。
+MarkNest 源于一次真实的浏览器迁移：文件夹层层嵌套、重复收藏很多、旧链接失效，有价值的页面又散落在不同浏览器里。它把这些事情集中到一个直观的整理界面中，同时让收藏数据留在本机。
 
-## 📸 截图
+## 界面预览
 
-<!-- 替换为你的产品截图，例如：
-<img src="https://tinxixii.github.io/MarkNest/screenshots/main.png" alt="MarkNest 主界面" />
--->
+### 查看收藏全貌，直接整理文件夹
 
-> 截图即将上线。
+![MarkNest 深度整理界面](docs/images/screenshots/zh-CN/organizer.png)
 
-## ✨ 主要功能
+### 在弹窗中快速整理
 
-- 🔍 **浏览与搜索** — 按文件夹查看和搜索 Chrome 收藏
-- ♻️ **查找重复** — 快速定位重复网址与长期未用的收藏
-- 📦 **批量管理** — 批量移动、删除与撤销操作
-- 🗂️ **整理与导出** — 调整文件夹结构并导出标准书签 HTML
-- 📥 **导入比对** — 导入其他浏览器导出的书签 HTML，与当前收藏本地比对
-- 🔗 **链接检查** — 仅在用户主动授权后检查收藏链接是否可访问
+<p align="center"><img src="docs/images/screenshots/zh-CN/popup.png" width="430" alt="MarkNest 快速整理弹窗"></p>
 
-## 🔒 隐私
+### 与其他浏览器导出的书签文件比对
 
-MarkNest 不包含账号、广告、分析 SDK 或 AI 服务。收藏整理与书签文件比对均在本地完成。
+![MarkNest 跨浏览器书签比对](docs/images/screenshots/zh-CN/compare.png)
 
-[查看隐私政策](https://tinxixii.github.io/MarkNest/privacy/)
+## 核心功能
 
-## 📝 获取与反馈
+- 按真实文件夹层级查看和搜索 Chrome 收藏，并展示网站图标。
+- 查找重复网址和一年未打开的收藏。
+- 批量选择、移动、删除、导出，并支持撤销最近操作。
+- 新建、拖拽排序、调整层级、折叠和展开收藏文件夹。
+- 仅在用户主动授权后检查失效链接。
+- 导入标准书签 HTML 文件，在本地进行跨浏览器比对，并选择性补充 Chrome 中缺少的收藏。
 
-Chrome 应用商店版本正在准备中。欢迎通过 [Issues](https://github.com/tinxixii/MarkNest/issues) 提交问题和建议。
+MarkNest 不包含 AI 分类、账号、广告或分析 SDK。
 
-## 📦 源代码说明
+## 从 GitHub 安装
 
-MarkNest 免费使用，但扩展程序源代码目前未开源。本仓库仅用于产品介绍、公开文档、隐私政策和用户反馈。
+1. 点击 **Code → Download ZIP**，然后解压仓库。
+2. 在 Chrome 打开 `chrome://extensions`。
+3. 开启右上角的 **开发者模式**。
+4. 点击 **加载已解压的扩展程序**，选择解压后的 `MarkNest` 文件夹（即包含 `manifest.json` 的目录）。
 
-仓库中的品牌素材、文案和页面内容未经许可不得复制、重新分发或用于发布同类扩展。
+## 隐私与权限
 
-## 🌟 支持
+收藏整理、导入比对和导出均在本地完成。MarkNest 不会把收藏、浏览记录或导入文件发送给开发者或第三方服务器。
 
-如果 MarkNest 对你有帮助，欢迎点个 ⭐
+| 权限 | 用途 |
+| --- | --- |
+| `bookmarks` | 在用户操作后读取和更新收藏树。 |
+| `storage` | 在本地保存界面设置、链接检查结果和撤销快照。 |
+| `downloads` | 将选中的收藏导出为标准 HTML 文件。 |
+| `favicon` | 在界面中显示 Chrome 本地保存的网站图标。 |
+| 可选网站访问权限 | 仅在用户主动运行失效链接检查时申请。 |
+
+[查看隐私政策](https://tinxixii.github.io/MarkNest/privacy/) · [反馈问题](https://github.com/tinxixii/MarkNest/issues)
+
+## 开发说明
+
+MarkNest 是一个 Manifest V3 扩展，使用原生 HTML、CSS 和 JavaScript 实现，没有包管理器、构建步骤、远程代码或运行时依赖。
+
+```text
+MarkNest/
+├── manifest.json
+├── popup.html
+├── index.html
+├── scripts/
+├── styles/
+├── assets/
+└── _locales/
+```
+
+修改源代码后，在 `chrome://extensions` 点击扩展卡片上的“重新加载”，再重新打开插件即可。
+
+## 开源许可与品牌
+
+源代码按照 [GNU GPL v3.0](LICENSE) 开源。基于它公开发布的修改版本，需要继续使用 GPL 并公开对应源代码。
+
+**MarkNest** 名称、Logo 和扩展图标不随代码授权给修改版产品使用。欢迎 Fork，但公开发布修改版时应更换名称和视觉标识，避免被误认为官方版本。详见 [TRADEMARKS.md](TRADEMARKS.md)。
+
+如果 MarkNest 对你有帮助，欢迎点一个 ⭐。

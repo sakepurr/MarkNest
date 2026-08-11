@@ -1,34 +1,33 @@
+# MarkNest Privacy Policy
+
+Effective: August 10, 2026
+
+MarkNest helps users view, filter, move, delete, import, export, and check Chrome bookmarks. It requires no account and contains no ads, behavioral analytics, or AI services.
+
+- Bookmark titles, URLs, folder paths, dates, settings, undo snapshots, and imported bookmark HTML are processed locally on the device.
+- MarkNest does not send bookmarks, browsing history, or imported files to the developer or third-party servers.
+- Website access is requested only when the user starts a broken-link check. MarkNest records the response status but does not read or save page content.
+- MarkNest does not sell, rent, or share user data.
+- Chrome removes locally stored extension data when MarkNest is uninstalled.
+
+For privacy questions, open an [issue](https://github.com/tinxixii/MarkNest/issues) or use the support contact listed on the Chrome Web Store.
+
+Public policy: https://tinxixii.github.io/MarkNest/privacy/
+
+---
+
 # MarkNest 隐私说明
 
-生效日期：2026-08-10
+生效日期：2026 年 8 月 10 日
 
-MarkNest 用于帮助用户查看、筛选、移动、删除、导入、导出和检查 Chrome 收藏。扩展不要求注册账号，不包含广告、用户行为分析或 AI 服务。
+MarkNest 用于帮助用户查看、筛选、移动、删除、导入、导出和检查 Chrome 收藏。扩展不要求账号，不包含广告、用户行为分析或 AI 服务。
 
-## 处理的数据
+- 收藏标题、网址、文件夹路径、时间、设置、撤销快照和导入的书签 HTML 均在设备本地处理。
+- MarkNest 不会把收藏、浏览记录或导入文件发送给开发者或第三方服务器。
+- 仅在用户主动运行失效链接检查时申请网站访问权限。扩展只记录响应状态，不读取或保存页面正文。
+- MarkNest 不出售、出租或共享用户数据。
+- 卸载扩展后，Chrome 会清除本地保存的扩展数据。
 
-- 收藏数据：标题、网址、文件夹路径、创建时间以及 Chrome 提供的最近使用时间。
-- 本地设置：界面语言、链接检查结果和用于撤销删除的临时快照。
-- 用户导入的书签 HTML：仅在设备本地解析，用于和当前 Chrome 收藏比对。
+如有隐私问题，请在 GitHub 提交 [Issue](https://github.com/tinxixii/MarkNest/issues)，或使用 Chrome 网上应用店中列出的支持联系方式。
 
-## 数据用途与传输
-
-收藏整理、导入比对和导出均在本地完成。MarkNest 不会把收藏、浏览记录或导入文件发送给开发者或第三方服务器。
-
-只有当用户主动点击“检查链接”并同意 Chrome 的网站访问授权后，扩展才会直接访问相应收藏网址，以判断其是否可连接。扩展只记录检查状态，不读取或保存页面正文。
-
-## 数据共享与出售
-
-MarkNest 不出售、出租或共享用户数据，也不将数据用于广告、画像或与扩展单一用途无关的目的。
-
-## 保存与删除
-
-本地设置和检查结果保存在 Chrome 扩展存储中。撤销快照只用于恢复最近的删除操作。卸载扩展会由 Chrome 清除扩展存储；用户也可以通过 Chrome 的扩展管理功能清除数据。
-
-## 权限
-
-权限用途详见项目 `README.md` 和 Chrome 网上应用店隐私披露。扩展仅申请实现上述功能所需的权限。
-
-## 联系方式
-
-提交商店前，请在 Chrome 开发者后台填写开发者支持邮箱，并将该邮箱补充到公开托管的隐私政策页面。
-
+公开隐私政策：https://tinxixii.github.io/MarkNest/privacy/
